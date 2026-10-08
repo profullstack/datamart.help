@@ -8,8 +8,20 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
-      - run: bun test
-      - run: docker build -t datamart-help .
+        with:
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: bun run typecheck
+      - run: bun run test
+      # The production image, run and checked end to end against the live Datamart API.
+      - run: docker build -t datamart-web .
+      - run: docker run -d --name web -p 127.0.0.1:3000:3000 datamart-web
+      - run: for i in $(seq 1 60); do curl -sf http://127.0.0.1:3000/healthz && break; sleep 1; done
+      - run: bun run smoke http://127.0.0.1:3000
+      - if: failure()
+        run: docker logs web
