@@ -67,6 +67,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="https://github.com/profullstack/datamart.help">Source</a>
             </nav>
             <p>{DISCLOSURE}</p>
+            <nav className="webring" aria-label="Profullstack webring">
+              <a href="https://rssamplifier.com/ring/profullstack/previous?from=https%3A%2F%2Fdatamart.help%2F" rel="prev" title="Previous site">&lt;&lt;</a>
+              <a href="https://rssamplifier.com/ring/profullstack">Profullstack</a>
+              <a href="https://rssamplifier.com/ring/profullstack/next?from=https%3A%2F%2Fdatamart.help%2F" rel="next" title="Next site">&gt;&gt;</a>
+              <a href="https://rssamplifier.com/ring/profullstack/random?from=https%3A%2F%2Fdatamart.help%2F" title="Random site" aria-label="Random site">{"⚄"}</a>
+            </nav>
           </div>
         </footer>
         <RegisterServiceWorker />
