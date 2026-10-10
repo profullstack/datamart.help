@@ -127,4 +127,4 @@ dl.facts dd { margin: 0; overflow-wrap: anywhere; }
 .site-footer { border-top: 1px solid var(--line); padding: 1.5rem 0 0.5rem; color: var(--muted); font-size: 0.85rem; }
 .site-footer nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
 .site-footer a { color: var(--muted); }
-.site-footer + .pfs-footer { border-top: 0; }
+.site-footer + div > .pfs-footer { border-top: 0; }
