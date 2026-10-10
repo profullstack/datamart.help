@@ -1,8 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Footer } from "@profullstack/footer/react";
 import Link from "next/link";
 import { RegisterServiceWorker } from "@/components/register-sw";
 import { DISCLOSURE } from "@/lib/site";
 import "./globals.css";
+
+// Pages prerender at build; revalidating hourly lets the shared footer pick up a new
+// @profullstack/footer template (served from jsDelivr @latest) without a redeploy.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://datamart.help"),
@@ -58,23 +63,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
         <main id="main" className="wrap">{children}</main>
-        <footer className="site-footer">
+        <div className="site-footer">
           <div className="wrap">
-            <nav aria-label="Footer">
-              <Link href="/about">About</Link>
-              <Link href="/developers">API and MCP</Link>
-              <Link href="/finance">Finance</Link>
-              <a href="https://github.com/profullstack/datamart.help">Source</a>
-            </nav>
             <p>{DISCLOSURE}</p>
-            <nav className="webring" aria-label="Profullstack webring">
-              <a href="https://rssamplifier.com/ring/profullstack/previous?from=https%3A%2F%2Fdatamart.help%2F" rel="prev" title="Previous site">&lt;&lt;</a>
-              <a href="https://rssamplifier.com/ring/profullstack">Profullstack</a>
-              <a href="https://rssamplifier.com/ring/profullstack/next?from=https%3A%2F%2Fdatamart.help%2F" rel="next" title="Next site">&gt;&gt;</a>
-              <a href="https://rssamplifier.com/ring/profullstack/random?from=https%3A%2F%2Fdatamart.help%2F" title="Random site" aria-label="Random site">{"⚄"}</a>
-            </nav>
           </div>
-        </footer>
+        </div>
+        <Footer
+          site="https://datamart.help/"
+          links={[
+            { label: "About", href: "/about" },
+            { label: "API and MCP", href: "/developers" },
+            { label: "Finance", href: "/finance" },
+            { label: "Source", href: "https://github.com/profullstack/datamart.help" },
+          ]}
+        />
         <RegisterServiceWorker />
       </body>
     </html>

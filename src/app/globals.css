@@ -124,7 +124,7 @@ dl.facts dd { margin: 0; overflow-wrap: anywhere; }
 .split { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
 @media (min-width: 52rem) { .split { grid-template-columns: 2fr 1fr; } }
 
-.site-footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2.5rem; color: var(--muted); font-size: 0.85rem; }
+.site-footer { border-top: 1px solid var(--line); padding: 1.5rem 0 0.5rem; color: var(--muted); font-size: 0.85rem; }
 .site-footer nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
 .site-footer a { color: var(--muted); }
-.site-footer nav.webring { justify-content: center; gap: 0.75rem; margin: 0.75rem 0 0; }
+.site-footer + .pfs-footer { border-top: 0; }
