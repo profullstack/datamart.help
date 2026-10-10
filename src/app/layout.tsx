@@ -38,6 +38,10 @@ const NAV = [
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        {/* CrawlProof stats: a plain async tag so it is in the served HTML (next/script afterInteractive is not). */}
+        <script data-site="6be9abdb-fd93-4756-bbf4-3ebefc3117c3" src="https://crawlproof.com/stats.js" async></script>
+      </head>
       <body>
         <a className="skip" href="#main">Skip to content</a>
         <header className="site-header">
