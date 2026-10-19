@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Footer } from "@profullstack/footer/react";
 import Link from "next/link";
 import { AdUnit } from "@/components/ad-unit";
 import { PitFooter } from "@/components/pit-footer";
@@ -6,8 +7,8 @@ import { RegisterServiceWorker } from "@/components/register-sw";
 import { DISCLOSURE } from "@/lib/site";
 import "./globals.css";
 
-// Pages prerender at build; revalidating hourly lets the pit.world footer
-// (fetched server side from pit.world/snippets/footer.html) refresh without a redeploy.
+// Pages prerender at build; revalidating hourly lets the shared @profullstack/footer
+// template (jsDelivr @latest) and the pit.world footer refresh without a redeploy.
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -68,17 +69,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AdUnit />
           {children}
         </main>
-        <footer className="site-footer">
+        <div className="site-footer">
           <div className="wrap">
-            <nav aria-label="Footer">
-              <span>&copy; {new Date().getFullYear()} Profullstack, Inc.</span>
-              <Link href="/about">About</Link>
-              <Link href="/developers">API and MCP</Link>
-              <a href="https://github.com/profullstack/datamart.help">Source</a>
-            </nav>
             <p>{DISCLOSURE}</p>
           </div>
-        </footer>
+        </div>
+        <Footer
+          site="https://datamart.help/"
+          links={[
+            { label: "About", href: "/about" },
+            { label: "API and MCP", href: "/developers" },
+            { label: "Source", href: "https://github.com/profullstack/datamart.help" },
+          ]}
+        />
         <RegisterServiceWorker />
         <PitFooter />
       </body>
