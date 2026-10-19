@@ -1,6 +1,6 @@
 {
   "name": "datamart-web",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "datamart.help: public libraries, schools, colleges and government services near you, with the source of every fact",
   "license": "MIT",
@@ -15,7 +15,6 @@
     "smoke": "bun scripts/smoke.ts"
   },
   "dependencies": {
-    "@profullstack/footer": "latest",
     "hono": "4.13.12",
     "next": "16.3.8",
     "react": "19.2.3",

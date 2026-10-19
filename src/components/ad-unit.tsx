@@ -15,7 +15,7 @@ declare global {
 }
 
 /**
- * One CrawlProof unit above the footer. The aside is server-rendered without
+ * One CrawlProof unit at the top of the content. The aside is server-rendered without
  * data-slot, so ad.js's own DOMContentLoaded pass skips it; the format is picked
  * from the real viewport on mount, then we ask ad.js to scan (retrying briefly
  * until it has loaded, and giving up so an ad blocker leaves no timer running).
