@@ -128,3 +128,8 @@ dl.facts dd { margin: 0; overflow-wrap: anywhere; }
 .site-footer nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
 .site-footer a { color: var(--muted); }
 .site-footer + div > .pfs-footer { border-top: 0; }
+
+/* CrawlProof ad unit: no box until ad.js starts filling it, so an unsold or blocked slot leaves no hole. */
+.ad-unit { display: flex; flex-direction: column; align-items: center; height: 0; overflow: hidden; }
+.ad-unit[data-cp-filled] { height: auto; min-height: 106px; margin: 1.5rem 0; overflow: visible; }
+.ad-unit[data-cp-filled][data-format="banner_300x250"] { min-height: 266px; }
