@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Footer } from "@profullstack/footer/react";
 import Link from "next/link";
+import { AdUnit } from "@/components/ad-unit";
 import { RegisterServiceWorker } from "@/components/register-sw";
 import { DISCLOSURE } from "@/lib/site";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* CrawlProof stats: a plain async tag so it is in the served HTML (next/script afterInteractive is not). */}
         <script data-site="6be9abdb-fd93-4756-bbf4-3ebefc3117c3" src="https://crawlproof.com/stats.js" async></script>
+        <script src="https://crawlproof.com/ad.js" async></script>
       </head>
       <body>
         <a className="skip" href="#main">Skip to content</a>
@@ -63,6 +65,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
         <main id="main" className="wrap">{children}</main>
+        <div className="wrap">
+          <AdUnit />
+        </div>
         <div className="site-footer">
           <div className="wrap">
             <p>{DISCLOSURE}</p>
