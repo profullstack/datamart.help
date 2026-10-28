@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@profullstack/footer": "latest",
-    "@profullstack/x402-gateway": "^0.15.1",
+    "@profullstack/x402-gateway": "^0.15.2",
     "hono": "4.13.14",
     "next": "16.4.3",
     "react": "19.3.1",
