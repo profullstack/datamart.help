@@ -1,4 +1,4 @@
-const PIT_FOOTER_URL = "https://pit.world/snippets/footer.html?site=datamart.help";
+const PIT_FOOTER_URL = "https://pit.world/snippets/footer.html?site=datamart.pwa.pit.world";
 
 /**
  * The pit.world network footer, fetched server side (cached an hour, 3s timeout).

@@ -19,13 +19,13 @@ beforeAll(async () => {
 });
 
 test("a training crawler is answered 402 with PAYMENT-REQUIRED", async () => {
-  const res = await gateway.handle(new Request("https://datamart.help/gov", { headers: { "user-agent": GPTBOT, "x-real-ip": "203.0.113.9" } }));
+  const res = await gateway.handle(new Request("https://datamart.pwa.pit.world/gov", { headers: { "user-agent": GPTBOT, "x-real-ip": "203.0.113.9" } }));
   expect(res?.status).toBe(402);
   expect(res?.headers.get("payment-required")).toBeTruthy();
 });
 
 test("/crawl offers a $1 day pass", async () => {
-  const res = await gateway.handle(new Request("https://datamart.help/crawl", { headers: { accept: "application/json" } }));
+  const res = await gateway.handle(new Request("https://datamart.pwa.pit.world/crawl", { headers: { accept: "application/json" } }));
   expect(res?.status).toBe(402);
   expect(res?.headers.get("payment-required")).toBeTruthy();
   const body = (await res!.json()) as { accepts: { amount: string }[] };
@@ -33,7 +33,7 @@ test("/crawl offers a $1 day pass", async () => {
 });
 
 test("browsers, the API and MCP endpoints pass through", async () => {
-  expect(await gateway.handle(new Request("https://datamart.help/", { headers: HUMAN }))).toBeNull();
-  expect(await gateway.handle(new Request("https://datamart.help/api/v1/health", { headers: { "user-agent": GPTBOT } }))).toBeNull();
-  expect(await gateway.handle(new Request("https://datamart.help/gov/mcp", { method: "POST", headers: { "user-agent": GPTBOT } }))).toBeNull();
+  expect(await gateway.handle(new Request("https://datamart.pwa.pit.world/", { headers: HUMAN }))).toBeNull();
+  expect(await gateway.handle(new Request("https://datamart.pwa.pit.world/api/v1/health", { headers: { "user-agent": GPTBOT } }))).toBeNull();
+  expect(await gateway.handle(new Request("https://datamart.pwa.pit.world/gov/mcp", { method: "POST", headers: { "user-agent": GPTBOT } }))).toBeNull();
 });
