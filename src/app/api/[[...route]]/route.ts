@@ -13,7 +13,7 @@ app.get("/", c =>
   c.json({
     name: "Datamart API",
     version: "v1",
-    docs: "https://datamart.help/developers",
+    docs: "https://datamart.pwa.pit.world/developers",
     endpoints: ["/api/v1/tools", "/api/v1/tools/:name", "/api/v1/providers", "/api/v1/providers/:id", "/api/v1/resources/:id", "/api/v1/health"],
   })
 );

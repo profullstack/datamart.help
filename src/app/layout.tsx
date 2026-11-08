@@ -12,7 +12,7 @@ import "./globals.css";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://datamart.help"),
+  metadataBase: new URL("https://datamart.pwa.pit.world"),
   title: { default: "Datamart: public services near you", template: "%s · Datamart" },
   description:
     "Find public libraries, schools, colleges and government services near a ZIP code, with the source of every fact. For people and their agents: web, API and MCP.",
@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
         <Footer
-          site="https://datamart.help/"
+          site="https://datamart.pwa.pit.world/"
           links={[
             { label: "About", href: "/about" },
             { label: "API and MCP", href: "/developers" },

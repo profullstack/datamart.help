@@ -38,7 +38,7 @@ export function ProviderView({ p, back, children }: { p: Provider; back: { href:
         </>
       ) : null}
       {p.mcp_endpoint && (
-        <p className="muted small">Agents: MCP at <code>https://datamart.help{p.mcp_endpoint}</code></p>
+        <p className="muted small">Agents: MCP at <code>https://datamart.pwa.pit.world{p.mcp_endpoint}</code></p>
       )}
       <Notes sources={p.sources} />
       {p.official_url && (
