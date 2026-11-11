@@ -49,6 +49,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* CrawlProof stats: a plain async tag so it is in the served HTML (next/script afterInteractive is not). */}
         <script data-site="6be9abdb-fd93-4756-bbf4-3ebefc3117c3" src="https://crawlproof.com/stats.js" async></script>
         <script src="https://crawlproof.com/ad.js" async></script>
+        {/* WebMCP (@profullstack/webmcp): site_info, open_page, and the search forms as tools. */}
+        <script
+          type="module"
+          data-webmcp=""
+          src="https://cdn.jsdelivr.net/npm/@profullstack/webmcp@0/src/embed.js"
+          data-search="/search?city={query}"
+          data-search-description="Open Datamart local services results for a city name."
+          data-pages={JSON.stringify({
+            search: "/search",
+            schools: "/edu",
+            libraries: "/lib",
+            government: "/gov",
+            finance: "/finance",
+            contracts: "/contracts",
+            developers: "/developers",
+            about: "/about",
+          })}
+        />
       </head>
       <body>
         <a className="skip" href="#main">Skip to content</a>

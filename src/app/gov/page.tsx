@@ -17,7 +17,7 @@ export default async function GovPage({ searchParams }: { searchParams: Promise<
     <>
       <h1>Government services</h1>
       <p className="lede">{ns.ok ? ns.data.description : "U.S. federal and California services, with official links."}</p>
-      <form className="panel form" action="/gov" method="get" role="search">
+      <form className="panel form" action="/gov" method="get" role="search" toolname="search_gov" tooldescription="Search Datamart government offices and services." toolautosubmit="">
         <label className="field wide">
           What do you need to do?
           <input name="q" defaultValue={p.q ?? ""} placeholder="business filing, driver license, payroll tax…" />

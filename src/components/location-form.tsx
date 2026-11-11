@@ -10,12 +10,24 @@ type Props = {
 };
 
 // A plain GET form: works without JavaScript and produces a shareable URL.
+// Declarative WebMCP tool names (@profullstack/webmcp polyfills them), one per results page.
+const TOOL_NAMES: Record<string, string> = { "/search": "search_services", "/edu": "search_schools", "/lib": "search_libraries" };
+const TOOL_LABELS: Record<string, string> = { "/search": "local services", "/edu": "schools", "/lib": "libraries" };
+
 export function LocationForm({ action, values = {}, children, submitLabel = "Search", showLocate = true }: Props) {
   // No default ZIP: an empty form searches Datamart's default area, which the results flag.
   const zip = values.zip ?? "";
   const radius = values.radius_miles ?? "20";
   return (
-    <form className="panel form" action={action} method="get" role="search">
+    <form
+      className="panel form"
+      action={action}
+      method="get"
+      role="search"
+      toolname={TOOL_NAMES[action] ?? "search_services"}
+      tooldescription={`Search Datamart ${TOOL_LABELS[action] ?? "local services"} near a ZIP code or city/state, within a radius in miles.`}
+      toolautosubmit=""
+    >
       <label className="field">
         ZIP code
         <input name="zip" inputMode="numeric" autoComplete="postal-code" pattern="[0-9]{5}" maxLength={5} defaultValue={zip} placeholder="95032" />
